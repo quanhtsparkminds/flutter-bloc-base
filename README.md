@@ -4,7 +4,7 @@ version SDK : stable. 3.19.0
 
 # sparkminds-flutter-base
 
-Java 18.0.2.1
+Java 17.0.11
 
 # Run it for flavor
 
