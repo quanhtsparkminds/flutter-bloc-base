@@ -16,8 +16,6 @@ import 'package:myapp/model/main_app_state.dart';
 import 'package:myapp/model/main_auth_state.dart';
 import 'package:myapp/model/main_local_auth_state.dart';
 import 'package:myapp/model/network_connection_model.dart';
-import 'package:myapp/routing_old_ver/router/navigator_cubit.dart';
-import 'package:myapp/routing_old_ver/page_configuration/introduction_page_configuration.dart';
 import 'package:myapp/shared/helps/storage_hepler.dart';
 import 'package:myapp/shared/helps/translation_service.dart';
 import 'package:myapp/shared/utils/my_logger.dart';
@@ -60,9 +58,6 @@ Future<void> runMain() async {
           ),
           BlocProvider<BottomTabbarCubit>.value(
             value: BottomTabbarCubit(),
-          ),
-          BlocProvider<NavigationCubit>.value(
-            value: NavigationCubit([IntroductionPageConfiguration()]),
           ),
           ChangeNotifierProvider.value(value: mainAppState),
           ChangeNotifierProvider.value(value: mainAuthState),

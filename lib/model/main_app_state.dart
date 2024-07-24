@@ -8,46 +8,22 @@ import 'package:myapp/commands/set_localauth_command.dart';
 import 'package:myapp/domain/model/auth_model/user_model.dart';
 import 'package:myapp/domain/repositories/user_repo.dart';
 import 'package:myapp/go_router/routes.types.dart';
-import 'package:myapp/routing_old_ver/page_configuration/introduction_page_configuration.dart';
 
 import 'package:myapp/shared/utils/easy_notifier.dart';
 import 'package:myapp/shared/utils/my_logger.dart';
 import 'package:myapp/themes.dart';
-import 'package:myapp/routing_old_ver/page_configuration.dart';
 import 'package:uni_links/uni_links.dart';
 
 abstract class AbstractModel extends EasyNotifier {}
 
 class MainAppState extends AbstractModel {
   static AppTheme get _defaultTheme => AppTheme();
-  static final PageConfiguration _defaultPage = IntroductionPageConfiguration();
 
   late StreamSubscription _unitLinkSub;
 
   UserRepository userRepository;
 
   MainAppState({required this.userRepository});
-
-  static final List<PageConfiguration> _defaults = [
-    IntroductionPageConfiguration()
-  ];
-
-  // set setCurrentPage(PageConfiguration value) {
-  //   notify(() => cubit.push(value));
-  // }
-
-  // popPage() {
-  //   notify(() => cubit.pop());
-  // }
-
-  final PageConfiguration _currentPage = _defaultPage;
-
-  PageConfiguration get currentPage => _currentPage;
-
-  // set setCurrentPage(PageConfiguration value) {
-  //   if (currentPage.key == value.key) return;
-  //   notify(() => _currentPage = value);
-  // }
 
   UserModel? _currentUser;
 
@@ -75,14 +51,12 @@ class MainAppState extends AbstractModel {
       notify(() => _hasSetInitialRoute = value);
 
   /// Settings
-  // Current Theme
   AppTheme _theme = _defaultTheme;
 
   AppTheme get theme => _theme;
 
   set setTheme(AppTheme theme) => notify(() => _theme = theme);
 
-  // TextDirection
   TextDirection _textDirection = TextDirection.ltr;
 
   TextDirection get textDirection => _textDirection;
@@ -102,25 +76,6 @@ class MainAppState extends AbstractModel {
       print('Err, $e');
     }
   }
-
-  // Future guard() async {
-  //   late PageConfiguration currentPage;
-  //   MyLogger.d('isAuthenticated  ${LocalAuthCommand().isAuthenticated} ');
-  //   MyLogger.d('Biometric ${LocalAuthCommand().isNotEmptyBiometric} ');
-  //   if (LocalAuthCommand().isAuthenticated) {
-  //     if (LocalAuthCommand().isNotEmptyBiometric) {
-  //       currentPage = LocalAuthCommand().isSetupBiometric
-  //           ? LocalAuthenticationPageConfiguration()
-  //           : SetupLocalAuthPageConfiguration();
-  //     } else {
-  //       currentPage = BottomTabbarPageConfiguration();
-  //     }
-  //   } else {
-  //     currentPage = IntroductionPageConfiguration();
-  //   }
-  // notify(() => cubit.clearAndPush(currentPage));
-  // notify(() => _currentPage = currentPage);
-  // }
 
   Future guard() async {
     try {

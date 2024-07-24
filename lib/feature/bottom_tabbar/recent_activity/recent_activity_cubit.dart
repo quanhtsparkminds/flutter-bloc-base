@@ -7,8 +7,6 @@ import 'package:myapp/feature/bottom_tabbar/types/item_category.dart';
 import 'package:myapp/feature/electrician/widgets/item_electrician_gridview.dart';
 import 'package:myapp/gen/assets.gen.dart';
 import 'package:myapp/go_router/routes.types.dart';
-import 'package:myapp/routing_old_ver/page_configuration.dart';
-import 'package:myapp/routing_old_ver/page_configuration/electrician_page_configuration.dart';
 
 part 'recent_activity_state.dart';
 part 'recent_activity_cubit.freezed.dart';
@@ -27,15 +25,15 @@ class RecentActivityCubit extends Cubit<RecentActivityState> {
   }
 
   void onPressedCategory(Categories item) {
-    PageConfiguration? page;
+    AppRoutes? appRouter;
     switch (item.categoryType) {
       case CategoryType.electrician:
-        page = ElectricianPageConfiguration();
+        appRouter = AppRoutes.electrician;
         break;
       default:
     }
-    if (page == null) return;
-    NavigateToCommand().pushToNamed(AppRoutes.electrician.name);
+    if (appRouter == null) return;
+    NavigateToCommand().pushToNamed(appRouter.name);
   }
 
   onPressedSeeAll(ItemInHome type) {
