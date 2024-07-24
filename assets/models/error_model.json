@@ -1,0 +1,10 @@
+{
+    "detail": "Bad Request",
+    "fieldErrors": [
+        {
+            "field": "email",
+            "messageCode": "must be a well-formed email address"
+        }
+    ],
+    "messageCode": "error.bad-request"
+}
